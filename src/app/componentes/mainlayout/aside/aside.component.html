@@ -1,0 +1,58 @@
+<aside>
+    <div class="perfil">
+        <div class="foto-perfil">
+            <img ngSrc="img/cara.jpeg" width="120" height="120" priority alt="Foto de perfil">
+        </div>
+        <div class="presentacion">
+            <h1>{{nombre}}</h1>
+            <h4>{{puesto}}</h4>
+        </div>
+    </div>
+
+    <section class="seccion-aside">
+        <h2>SOBRE MÍ</h2>
+        <p>Desarrollador de Aplicaciones Multiplataforma con experiencia en desarrollo web, investigación en IA y
+            resolución de incidencias. <br><br>
+            Nuevo, pero con ganas de aprender.</p>
+    </section>
+
+    <section class="seccion-aside">
+        <h2>CONTACTO</h2>
+        <div class="contacto-lista">
+            <div class="contacto-item">
+                <span class="contacto-label">UBICACIÓN</span>
+                <span>{{ciudad}}</span>
+            </div>
+            <div class="contacto-item">
+                <span class="contacto-label">TELÉFONO</span>
+                <a [href]="'tel:' + telefono">{{telefono}}</a>
+            </div>
+            <div class="contacto-item">
+                <span class="contacto-label">EMAIL</span>
+                <a [href]="'mailto:' + correo">{{ correo }}</a>
+            </div>
+            <div class="contacto-item">
+                <span class="contacto-label">GITHUB</span>
+                <a [href]="github" target="_blank">github.com/Poio-o</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-aside">
+        <h2>IDIOMAS</h2>
+        <div class="tags-lista">
+            <span class="tag">{{idiomas[0]}}</span>
+            <span class="tag">{{idiomas[1]}}</span>
+            <span class="tag">{{idiomas[2]}}</span>
+        </div>
+    </section>
+
+    <section class="seccion-aside">
+        <h2>CUALIDADES</h2>
+        <div class="tags-lista">
+            <span class="tag-secundario">{{cualidades[0]}}</span>
+            <span class="tag-secundario">{{cualidades[1]}}</span>
+            <span class="tag-secundario">{{cualidades[2]}}</span>
+        </div>
+    </section>
+</aside>

@@ -1,0 +1,80 @@
+<main>
+  <section class="seccion-principal">
+    <h2>EXPERIENCIA</h2>
+    <div class="cards-lista">
+      <div class="card-item">
+        <div class="card-header">
+          <div class="logo-box">
+            <img src="img/baart.png" alt="Logo Business as an Art">
+          </div>
+          <div class="card-titulos">
+            <div class="card-titulo-fila">
+              <h3>Business as an Art</h3>
+              <span class="badge-tiempo">3 meses</span>
+            </div>
+            <p class="resumen">Investigación de IA y Diseño de páginas web</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-header">
+          <div class="logo-box">
+            <img src="img/ldquantum.webp" alt="Logo LDQuantum">
+          </div>
+          <div class="card-titulos">
+            <div class="card-titulo-fila">
+              <h3>LDQuantum</h3>
+              <span class="badge-tiempo">3 meses</span>
+            </div>
+            <p class="resumen">Gestión de errores y Diseño de páginas web</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-principal">
+    <h2>FORMACIÓN</h2>
+    <div class="cards-lista">
+      <div class="card-item">
+        <div class="card-header">
+          <div class="logo-box">
+            <img src="img/alanturing.jpeg" alt="Logo Alan Turing">
+          </div>
+          <div class="card-titulos">
+            <div class="card-titulo-fila">
+              <h3>Sistemas Microinformáticos y Redes</h3>
+              <span class="badge-tiempo">2 años</span>
+            </div>
+            <p class="lugar">CPIFP Alan Turing</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-header">
+          <div class="logo-box">
+            <img src="img/alanturing.jpeg" alt="Logo Alan Turing">
+          </div>
+          <div class="card-titulos">
+            <div class="card-titulo-fila">
+              <h3>Desarrollo de Aplicaciones Multiplataforma</h3>
+              <span class="badge-tiempo">2 años</span>
+            </div>
+            <p class="lugar">CPIFP Alan Turing</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-principal">
+    <h2>TECNOLOGÍAS</h2>
+    <ul class="tecnologias-grid">
+      @for (tecnologia of tecnologias; track tecnologia) {
+      <li>{{ tecnologia }}</li>
+      }
+    </ul>
+  </section>
+</main>
