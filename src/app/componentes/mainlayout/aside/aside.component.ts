@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-aside',
-  imports: [NgOptimizedImage],
+  imports: [],
   templateUrl: './aside.component.html',
   styleUrl: './aside.component.css'
 })
@@ -16,4 +15,12 @@ export class AsideComponent {
   github = 'https://github.com/Poio-o';
   idiomas = ['Español', 'Inglés', 'Japonés'];
   cualidades = ['Resolución de problemas', 'Trabajo en equipo', 'Capacidad de aprendizaje'];
+  
+  fotoPerfil = 'img/cara.jpeg';
+
+  mostrarContacto: boolean = true;
+
+  toggleContacto() {
+    this.mostrarContacto = !this.mostrarContacto;
+  }
 }

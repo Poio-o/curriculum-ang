@@ -1,4 +1,8 @@
+<app-header 
+  [seccionActiva]="seccionActiva" 
+  (cambiarSeccion)="cambiarSeccion($event)">
+</app-header>
 
-<app-mainlayout></app-mainlayout>
+<app-mainlayout [seccion]="seccionActiva"></app-mainlayout>
 
 <app-footer></app-footer>

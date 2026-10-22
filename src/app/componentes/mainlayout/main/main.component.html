@@ -1,80 +1,137 @@
 <main>
-  <section class="seccion-principal">
-    <h2>EXPERIENCIA</h2>
-    <div class="cards-lista">
-      <div class="card-item">
-        <div class="card-header">
-          <div class="logo-box">
-            <img src="img/baart.png" alt="Logo Business as an Art">
+  @switch (seccion()) {
+
+    @case ('resumen') {
+      <section class="seccion-principal">
+        <h2>SOBRE MÍ</h2>
+        <div class="card-item bio-card">
+          <p class="resumen-texto">
+            Desarrollador de Aplicaciones Multiplataforma con sólida formación técnica y entusiasmo por
+            el desarrollo de aplicaciones web y de escritorio. Experiencia en tecnologías modernas de frontend 
+            como Angular y TypeScript, desarrollo de servicios backend en Java y bases de datos SQL.
+            Interesado en investigación e integración de Inteligencia Artificial en entornos productivos.
+          </p>
+        </div>
+      </section>
+
+      <section class="seccion-principal">
+        <h2>TECNOLOGÍAS Y COMPETENCIAS</h2>
+        <p class="instruccion-texto">Pulsa sobre cualquier tecnología para seleccionarla:</p>
+
+        <ul class="tecnologias-grid">
+          @for (tecnologia of tecnologias; track tecnologia) {
+            <li 
+              class="tecnologia-badge"
+              [class.seleccionada]="tecnologiaSeleccionada === tecnologia"
+              (click)="seleccionarTecnologia(tecnologia)"
+              role="button"
+              tabindex="0">
+              [ {{ tecnologia }} ]
+            </li>
+          }
+        </ul>
+
+        @if (tecnologiaSeleccionada) {
+          <div class="tecnologia-seleccionada-caja">
+            <span class="icono-check">✔</span>
+            <span class="texto-seleccion">
+              Tecnología seleccionada: <strong>{{ tecnologiaSeleccionada }}</strong>
+            </span>
+            <button 
+              type="button" 
+              class="btn-quitar-seleccion" 
+              (click)="limpiarSeleccionTecnologia()" 
+              title="Quitar selección">
+              ✕
+            </button>
           </div>
-          <div class="card-titulos">
-            <div class="card-titulo-fila">
-              <h3>Business as an Art</h3>
-              <span class="badge-tiempo">3 meses</span>
-            </div>
-            <p class="resumen">Investigación de IA y Diseño de páginas web</p>
+        }
+      </section>
+    }
+
+    @case ('experiencia') {
+      <section class="seccion-principal">
+        <div class="cabecera-seccion-fila">
+          <h2>EXPERIENCIA PROFESIONAL</h2>
+          <div class="acciones-test">
+            <button 
+              type="button" 
+              class="btn-test"
+              (click)="vaciarExperiencias()"
+              [disabled]="experiencias.length === 0"
+              title="Vacía la lista para visualizar el bloque @empty">
+              Probar lista vacía
+            </button>
+            <button 
+              type="button" 
+              class="btn-test"
+              (click)="restaurarExperiencias()"
+              [disabled]="experiencias.length > 0"
+              title="Restaura los datos de experiencia">
+              Restaurar datos
+            </button>
           </div>
         </div>
-      </div>
 
-      <div class="card-item">
-        <div class="card-header">
-          <div class="logo-box">
-            <img src="img/ldquantum.webp" alt="Logo LDQuantum">
-          </div>
-          <div class="card-titulos">
-            <div class="card-titulo-fila">
-              <h3>LDQuantum</h3>
-              <span class="badge-tiempo">3 meses</span>
+        <div class="cards-lista">
+          @for (exp of experiencias; track exp.id) {
+            <div class="card-item">
+              <div class="card-header">
+                <div class="logo-box">
+                  <img [src]="exp.logo" [alt]="'Logo de ' + exp.empresa">
+                </div>
+                <div class="card-titulos">
+                  <div class="card-titulo-fila">
+                    <h3>{{ exp.empresa }}</h3>
+                    <span class="badge-tiempo">{{ exp.periodo }}</span>
+                  </div>
+                  <h4 class="card-puesto">{{ exp.puesto }}</h4>
+                  <p class="resumen">{{ exp.descripcion }}</p>
+                </div>
+              </div>
             </div>
-            <p class="resumen">Gestión de errores y Diseño de páginas web</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="seccion-principal">
-    <h2>FORMACIÓN</h2>
-    <div class="cards-lista">
-      <div class="card-item">
-        <div class="card-header">
-          <div class="logo-box">
-            <img src="img/alanturing.jpeg" alt="Logo Alan Turing">
-          </div>
-          <div class="card-titulos">
-            <div class="card-titulo-fila">
-              <h3>Sistemas Microinformáticos y Redes</h3>
-              <span class="badge-tiempo">2 años</span>
+          } @empty {
+            <div class="mensaje-vacio">
+              <p>Todavía no se ha añadido experiencia profesional.</p>
             </div>
-            <p class="lugar">CPIFP Alan Turing</p>
-          </div>
+          }
         </div>
-      </div>
+      </section>
+    }
 
-      <div class="card-item">
-        <div class="card-header">
-          <div class="logo-box">
-            <img src="img/alanturing.jpeg" alt="Logo Alan Turing">
-          </div>
-          <div class="card-titulos">
-            <div class="card-titulo-fila">
-              <h3>Desarrollo de Aplicaciones Multiplataforma</h3>
-              <span class="badge-tiempo">2 años</span>
+    @case ('formacion') {
+      <section class="seccion-principal">
+        <h2>FORMACIÓN ACADÉMICA</h2>
+        <div class="cards-lista">
+          @for (item of formaciones; track item.id) {
+            <div class="card-item">
+              <div class="card-header">
+                <div class="logo-box">
+                  <img [src]="item.logo" [alt]="'Logo de ' + item.centro">
+                </div>
+                <div class="card-titulos">
+                  <div class="card-titulo-fila">
+                    <h3>{{ item.titulo }}</h3>
+                    <span class="badge-tiempo">{{ item.periodo }}</span>
+                  </div>
+                  <p class="lugar">{{ item.centro }}</p>
+                </div>
+              </div>
             </div>
-            <p class="lugar">CPIFP Alan Turing</p>
-          </div>
+          } @empty {
+            <div class="mensaje-vacio">
+              <p>Todavía no se ha añadido formación académica.</p>
+            </div>
+          }
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
+    }
 
-  <section class="seccion-principal">
-    <h2>TECNOLOGÍAS</h2>
-    <ul class="tecnologias-grid">
-      @for (tecnologia of tecnologias; track tecnologia) {
-      <li>{{ tecnologia }}</li>
-      }
-    </ul>
-  </section>
+    @default {
+      <section class="seccion-principal">
+        <h2>SELECCIÓN DE SECCIÓN</h2>
+        <p>Por favor, pulsa sobre una de las opciones de la cabecera para ver los detalles.</p>
+      </section>
+    }
+  }
 </main>

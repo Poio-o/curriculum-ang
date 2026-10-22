@@ -1,0 +1,38 @@
+<header class="header-container">
+  <div class="header-branding">
+    <span class="header-badge">CV</span>
+    <div class="header-titulos">
+      <h1 class="header-nombre">Miguel Trujillo Rojas</h1>
+      <p class="header-subtitulo">Currículum Vitae Interactivo</p>
+    </div>
+  </div>
+
+  <nav class="header-nav" aria-label="Navegación del CV">
+    <button 
+      type="button" 
+      class="nav-boton"
+      [class.activo]="seccionActiva() === 'resumen'"
+      [disabled]="seccionActiva() === 'resumen'"
+      (click)="seleccionar('resumen')">
+      RESUMEN
+    </button>
+
+    <button 
+      type="button" 
+      class="nav-boton"
+      [class.activo]="seccionActiva() === 'experiencia'"
+      [disabled]="seccionActiva() === 'experiencia'"
+      (click)="seleccionar('experiencia')">
+      EXPERIENCIA
+    </button>
+
+    <button 
+      type="button" 
+      class="nav-boton"
+      [class.activo]="seccionActiva() === 'formacion'"
+      [disabled]="seccionActiva() === 'formacion'"
+      (click)="seleccionar('formacion')">
+      FORMACIÓN
+    </button>
+  </nav>
+</header>
